@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="BabyBook.View.Menu"
+                  Title="Master">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" Padding="0">
+            <ContentPage.Content>
+                <StackLayout>
+                    
+                    <Grid BackgroundColor="#FFB6C1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="10"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                          Grid.Column="1"
+                          Grid.Row="1"
+                          Text="BabyBook"
+                          TextColor="White" FontSize="27" VerticalTextAlignment="Start"/>
+                    </Grid>
+
+                    <TableView Intent="Menu">
+                        <TableSection>
+                            <ViewCell Tapped="GoInfoBabyPage">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Informações Iniciais" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoPage2">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Família" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoPage3">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Meu Crescimento" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoPage3">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Prmeiros Momentos" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoPage3">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Aniversários" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+
+                            <ViewCell Tapped="GoPage3">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Dentição" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+                            
+                            <ViewCell Tapped="GoPage3">
+                                <StackLayout Padding="15,10">
+                                    <Label Text="Batizado" VerticalTextAlignment="Center" FontSize="20"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </TableSection>
+                    </TableView>
+
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

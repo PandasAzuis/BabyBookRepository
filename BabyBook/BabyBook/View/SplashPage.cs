@@ -40,7 +40,7 @@ namespace BabyBook.View
             await splashImage.ScaleTo(0.8, 1400, Easing.Linear);
             await splashImage.ScaleTo(140, 1100, Easing.Linear);
 
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new Menu();
         }
 
     }
