@@ -1,4 +1,5 @@
-﻿using Plugin.Media;
+﻿using BabyBook.ViewModel;
+using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -14,35 +15,46 @@ namespace BabyBook.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuDetail : ContentPage
     {
+        public MenuDetailViewModel MenuDetailViewModel { get; set; }
         public MenuDetail()
         {
             InitializeComponent();
+            MenuDetailViewModel = new MenuDetailViewModel();
+            LoadPhoto();
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void LoadPhoto()
         {
-            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            try
             {
-                await DisplayAlert("Nenhuma Câmera", ":( Nenuma Câmera disponível.", "OK");
-                return;
+                var photo = await this.MenuDetailViewModel.GetBabyPhoto();
+                if(photo != null)
+                BabyPhoto.Source = photo;
             }
-
-            var armazenamento = new StoreCameraMediaOptions()
+            catch (Exception exp)
             {
-                SaveToAlbum = true,
-                Name = "MinhaFoto.jpg"
-            };
-            var foto = await CrossMedia.Current.TakePhotoAsync(armazenamento);
+                await DisplayAlert("Ops", exp.Message, "OK");
+            }
+        }
 
-            if (foto == null)
-                return;
-
-             BabyPhoto.Source = ImageSource.FromStream(() =>
+        private async void GetPhoto(object sender, EventArgs e)
+        {
+            try
             {
-                var stream = foto.GetStream();
-                foto.Dispose();
-                return stream;
-            });
+                var file = await this.MenuDetailViewModel.SavePhoto();
+
+                BabyPhoto.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    file.Dispose();
+                    return stream;
+
+                });
+            }
+            catch (Exception exp)
+            {
+                await DisplayAlert("Ops",exp.Message,"OK");
+            }
         }
     }
 }

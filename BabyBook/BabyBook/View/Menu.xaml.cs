@@ -16,10 +16,6 @@ namespace BabyBook.View
         {
             InitializeComponent();
             Detail = new NavigationPage(new MenuDetail());
-
-			// Open the Baby Info Page
-			Detail.Navigation.PushAsync(new InfoBabyPage());
-			IsPresented = false;
 		}
 
 		private void GoInfoBabyPage(object sender, System.EventArgs e)

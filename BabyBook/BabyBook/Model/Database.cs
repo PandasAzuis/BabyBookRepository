@@ -18,13 +18,13 @@ namespace BabyBook.Model
         }
 
         #region Baby
-        public Task<List<Baby>> GetBaby(int id)
+        public Task<List<Baby>> GetBabys()
         {
             return _database.Table<Baby>()
                 .ToListAsync();
         }
 
-        public Task<int> SavePersonAsync(Baby baby)
+        public Task<int> SaveBaby(Baby baby)
         {
             return _database.InsertAsync(baby);
         }
