@@ -13,8 +13,8 @@ namespace BabyBook.Model
         public string Name { get; set; }
         public string BirthDate { get; set; }
         public string BirthTime { get; set; }
-        public float Height { get; set; }
-        public float Weight { get; set; }
+        public string Height { get; set; }
+        public string Weight { get; set; }
         public string MaternityHospital { get; set; }
         public string BloodType { get; set; }
         public byte[] FistPhoto { get; set; }

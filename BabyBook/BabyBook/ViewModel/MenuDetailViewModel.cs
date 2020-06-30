@@ -63,8 +63,10 @@ namespace BabyBook.ViewModel
                 if (baby.Count <= 0)
                     return null;
 
-
                 Baby.Instance = baby[0];
+
+                if (Baby.Instance.FistPhoto == null)
+                    return null;
 
                 Stream stream = new MemoryStream(Baby.Instance.FistPhoto);
 

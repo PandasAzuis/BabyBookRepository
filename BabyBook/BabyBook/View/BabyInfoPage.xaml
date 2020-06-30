@@ -4,13 +4,81 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="BabyBook.View.InfoBabyPage">
+             x:Class="BabyBook.View.InfoBabyPage"
+             Title="Informações Iniciais">
     <ContentPage.Content>
-        <StackLayout>
-            <Entry x:Name="nameEntry" Placeholder="Enter name"/>
-            <Entry x:Name="ageEntry" Placeholder="Enter age"/>
+        <StackLayout BackgroundColor="#f8f8d9">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <Button Text="Add to Database"/>
+                <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" 
+                       Source="FlowersArabesco.png" Aspect="Fill"/>
+
+                <Entry Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       x:Name="nameEntry" Placeholder="Escreva o nome do bebê"/>
+
+                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" 
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                       FontSize="Large" TextColor="#c4004b"
+                       Text="-- NASCIMENTO --"/>
+
+                <DatePicker Grid.Column="0" Grid.Row="3"
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            Format="dd/MM/yyyy"
+                            x:Name="birthDatePicker"/>
+                <TimePicker Grid.Column="1" Grid.Row="3" 
+                            HorizontalOptions="Center" VerticalOptions="Center"
+                            x:Name="birthTimePicker"/>
+
+                <Entry Grid.Column="0" Grid.Row="4"
+                       Placeholder="Peso"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       x:Name="weightEntry" Keyboard="Numeric"/>
+                <Entry Grid.Column="1" Grid.Row="4" 
+                       Placeholder="Altura"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       x:Name="heightEntry" Keyboard="Numeric"/>
+                
+                <Entry Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"
+                       Placeholder="Maternidade"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       x:Name="maternityHospitalEntry"/>
+
+                <Picker Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"
+                    x:Name="bloodTypePCK" HorizontalOptions="FillAndExpand" Title="Selecione o Tipo Sanguíneo:">
+                    <Picker.Items>
+                        <x:String>A+</x:String>
+                        <x:String>A-</x:String>
+                        <x:String>B+</x:String>
+                        <x:String>B-</x:String>
+                        <x:String>AB+</x:String>
+                        <x:String>AB-</x:String>
+                        <x:String>O+</x:String>
+                        <x:String>O-</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <ImageButton Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="2"
+                        BackgroundColor="#c4004b" 
+                        Source="imgBtnSave.png"
+WidthRequest=" "
+                        Margin="0,35,0,0"
+                        Clicked="OnSaveButtonClicked"/>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
