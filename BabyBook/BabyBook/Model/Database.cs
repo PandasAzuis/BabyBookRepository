@@ -28,6 +28,11 @@ namespace BabyBook.Model
         {
             return _database.InsertAsync(baby);
         }
+
+        public Task<int> UpdateBaby(Baby baby)
+        {
+            return _database.UpdateAsync(baby);
+        }
         #endregion
     }
 }

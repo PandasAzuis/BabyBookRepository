@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLitePCL;
 
 namespace BabyBook.Model
 {
@@ -17,5 +18,15 @@ namespace BabyBook.Model
         public string MaternityHospital { get; set; }
         public string BloodType { get; set; }
         public byte[] FistPhoto { get; set; }
+
+        // Singleton
+        private static Baby _instance;
+
+        public static Baby Instance
+        {
+            get { return _instance; }
+            set { _instance = value; }
+        }
+
     }
 }

@@ -11,6 +11,7 @@ namespace BabyBook.ViewModel
 {
     public class MenuDetailViewModel
     {
+
         public async Task<MediaFile> SavePhoto()
         {
             try
@@ -25,13 +26,24 @@ namespace BabyBook.ViewModel
                     file = memoryStream.ToArray();
                 }
 
-                var baby = new Baby
+                if(Baby.Instance == null)
                 {
-                    ID = 0,
-                    FistPhoto = file
-                };
+                    var baby = new Baby
+                    {
+                        ID = 0,
+                        FistPhoto = file
+                    };
 
-                await App.Database.SaveBaby(baby);
+                    await App.Database.SaveBaby(baby);
+
+                    Baby.Instance = baby;
+                }
+                else
+                {
+                    Baby.Instance.FistPhoto = file;
+                    await App.Database.UpdateBaby(Baby.Instance);
+
+                }
 
                 return taskFile;
             }
@@ -51,7 +63,10 @@ namespace BabyBook.ViewModel
                 if (baby.Count <= 0)
                     return null;
 
-                Stream stream = new MemoryStream(baby[0].FistPhoto);
+
+                Baby.Instance = baby[0];
+
+                Stream stream = new MemoryStream(Baby.Instance.FistPhoto);
 
                 return ImageSource.FromStream(() => { return stream; }); ;
             }

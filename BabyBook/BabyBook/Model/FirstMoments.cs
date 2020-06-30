@@ -11,5 +11,6 @@ namespace BabyBook.Model
         public int ID { get; set; }
         public string  Name { get; set; }
         public byte[] Photo { get; set; }
+        public int BabyId { get; set; }
     }
 }
